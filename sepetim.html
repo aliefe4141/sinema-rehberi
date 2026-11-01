@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sepetim</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stil.css">
 </head>
 <body>
     <header>
@@ -19,12 +19,40 @@
     </header>
 
 
-    <main>
-        <section>
-            <h2>Bilet Sepetim</h2>
-            <p>Henüz sepetinize bir şey eklemediniz.</p>
-        </section>
-    </main>
+<main>
+    <section class="sepet-alani">
+        <h2>Bilet Sepetim</h2>
+        
+        <div class="sepet-icerik">
+            <!-- Sepet Boşsa Gösterilecek Mesaj (Şu an gizli olucak) -->
+            <p class="bos-sepet-mesaji" style="display: none;">Sepetinizde henüz bilet bulunmuyor.</p>
+
+            <!-- Sepete Eklenmiş Örnek Bilet (Arayüz tasarımı için) -->
+            <div class="sepet-ogesi">
+                <div class="bilet-detay">
+                    <h3>Korku Kapanı</h3>
+                    <p>Büyülü Fener Sineması - Kızılay | 18:15 Seansı</p>
+                    <p>Bilet Türü: Tam (120 ₺)</p>
+                </div>
+                
+                <div class="bilet-islem">
+                    <!-- Bilet sayısı güncelleme (CRUD - Update) -->
+                    <div class="adet-kontrol">
+                        <label>Adet:</label>
+                        <input type="number" value="1" min="1" max="10">
+                    </div>
+                    <!-- Bilet silme butonu (CRUD - Delete) -->
+                    <button class="sil-btn">Sil</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="sepet-ozeti">
+            <h3>Toplam Tutar: <span id="toplam-fiyat">120 ₺</span></h3>
+            <button class="satin-al-btn">Biletleri Onayla</button>
+        </div>
+    </section>
+</main>
 
    
     <footer>

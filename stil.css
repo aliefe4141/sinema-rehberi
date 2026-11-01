@@ -1,0 +1,512 @@
+/* 1. Tarayıcı Boşluklarını Sıfırlama */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Kutu boyutlarının taşmasını engeller */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9; /* Tüm sayfalara göz yormayan açık gri arka plan veriyoruz */
+}
+
+/* 2. Üst Kısım (Header) Arka Plan ve Düzeni */
+header {
+    background-color: #2c3e50; /* Sinema temasına uygun koyu lacivert renk */
+    color: white; /* Başlık rengi beyaz */
+    padding: 20px;
+    text-align: center; /* Yazıları ortalar */
+}
+
+/* 3. Flexbox ile Ortak Menü (Nav) Düzeni */
+nav {
+    margin-top: 15px;
+    display: flex; /* Flexbox yapısını aktif ediyoruz */
+    
+    /* DİZİLİM DENEMESİ: row (yan yana) veya column (dikey) */
+    flex-direction: row; 
+    
+    justify-content: center; /* Öğeleri ekranın tam ortasına hizalar */
+    gap: 30px; /* Bağlantılar arasına 30 piksel boşluk ekler */
+}
+
+/* Menüdeki Bağlantıların (a) Görünümü */
+nav a {
+    color: #f1c40f; /* Sarı renk ile kontrast yaratıyoruz */
+    text-decoration: none; /* Linklerin varsayılan alt çizgisini kaldırır */
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* Menüdeki Bağlantıların (a) Butona Dönüştürülmesi */
+nav a {
+    color: white; /* Yazı rengini beyaz yapıyoruz */
+    text-decoration: none; /* Linklerin altındaki çizgiyi kaldırıyoruz */
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 10px 20px; /* Bağlantının içine boşluk ekleyerek buton görünümü veriyoruz (üst/alt 10px, sağ/sol 20px) */
+    background-color: #34495e; /* Butonlara koyu gri-lacivert bir arka plan rengi veriyoruz */
+    border-radius: 5px; /* Butonların köşelerini hafifçe yuvarlatıyoruz */
+    transition: background-color 0.3s ease; /* Renk değişiminin aniden değil, 0.3 saniyede yumuşak geçişle olmasını sağlıyoruz */
+}
+
+/* Fareyle Üzerine Gelindiğinde (Hover) Oluşacak Efekt */
+nav a:hover {
+    background-color: #f1c40f; /* Arka plan rengini sinema konseptine uygun sarıya çeviriyoruz */
+    color: #2c3e50; /* Yazı rengini koyu lacivert yaparak sarı arka planla kontrast yaratıyoruz */
+}
+
+
+
+
+
+/* --- ANA SAYFA (INDEX.HTML) TASARIMI --- */
+
+/* 1. Arama Alanı (Flexbox Kullanımı) */
+.arama-alani {
+    background-color: #ecf0f1; /* Açık gri bir arka plan */
+    padding: 40px 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.arama-kutusu {
+    display: flex; /* Flexbox ile arama çubuğunu ve butonu yan yana diziyoruz */
+    justify-content: center; /* Ekranın ortasına hizalıyoruz */
+    gap: 10px; /* Elemanlar arası boşluk */
+    margin-top: 15px;
+}
+
+.arama-kutusu select, .arama-kutusu button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+}
+
+.arama-kutusu button {
+    background-color: #e74c3c; /* Butona dikkat çekici kırmızı bir renk veriyoruz */
+    color: white;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.arama-kutusu button:hover {
+    background-color: #c0392b; /* Üzerine gelindiğinde koyu kırmızı olur */
+}
+
+/* 2. Öne Çıkan Filmler (CSS Grid Kullanımı) */
+.one-cikanlar {
+    padding: 0 40px 40px 40px;
+}
+
+.one-cikanlar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
+
+.film-grid {
+    display: grid; /* Grid yapısını aktif ediyoruz */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ekran boyutuna göre sığdığı kadar kartı otomatik yan yana dizer */
+    gap: 30px; /* Kartlar arasına 30px boşluk bırakır */
+}
+
+/* Film Kartlarının Tasarımı */
+.film-karti {
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Kartlara hafif bir derinlik/gölge veriyoruz */
+    text-align: center;
+    transition: transform 0.3s; /* Üzerine gelince büyüme efekti için hazırlık */
+}
+
+.film-karti:hover {
+    transform: translateY(-10px); /* Kartın üzerine fareyle gelindiğinde hafifçe yukarı kalkar */
+}
+
+/* Gerçek resim ekleyene kadar kullanacağımız geçici afiş alanı */
+.afis-yer-tutucu {
+    background-color: #95a5a6;
+    color: white;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+/* --- SİNEMALAR SAYFASI (SİNEMALAR.HTML) TASARIMI --- */
+
+/* 1. Konum Filtreleme Alanı (Flexbox) */
+.konum-filtre {
+    background-color: #34495e; /* Menü butonlarıyla uyumlu arka plan */
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.filtre-kutusu {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.filtre-kutusu select, .filtre-kutusu button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+}
+
+.filtre-kutusu button {
+    background-color: #f1c40f;
+    color: #2c3e50;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filtre-kutusu button:hover {
+    background-color: #d4ac0d;
+}
+
+/* 2. Sinema Kartları ve Seans Saatleri (Flexbox) */
+.sinema-listesi {
+    padding: 0 40px;
+    display: flex; /* Kartları alt alta veya yan yana dizmek için ana flexbox */
+    flex-direction: column; /* Şimdilik alt alta dizelim */
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.sinema-karti {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    border-left: 5px solid #2c3e50; /* Sol tarafa estetik bir çizgi ekliyoruz */
+}
+
+.sinema-karti h3 {
+    color: #e74c3c;
+    margin-bottom: 10px;
+}
+
+.seans-bilgileri {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee; /* Adres ile seanslar arasına ince bir çizgi */
+}
+
+.seans-saatleri {
+    display: flex; /* Saatleri yan yana şık butonlar gibi dizmek için */
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.seans-saatleri span {
+    background-color: #ecf0f1;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: #34495e;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.seans-saatleri span:hover {
+    background-color: #2c3e50;
+    color: white;
+}
+
+/* 3. Fiyat Karşılaştırma Tablosu Tasarımı */
+.fiyat-tablosu-alani {
+    padding: 0 40px 50px 40px;
+}
+
+.fiyat-tablosu-alani h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+.fiyat-tablosu {
+    width: 100%; /* Tablonun ekranı tamamen kaplamasını sağlar */
+    border-collapse: collapse; /* Hücre kenarlıklarını birleştirerek modern bir görünüm verir */
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden; /* Köşelerin yuvarlak kalması için taşan kısımları gizler */
+}
+
+.fiyat-tablosu th, .fiyat-tablosu td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.fiyat-tablosu th {
+    background-color: #2c3e50;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.fiyat-tablosu tbody tr:hover {
+    background-color: #f9f9f9; /* Satırın üzerine gelince hafifçe rengi değişir */
+}
+
+/* --- FİLMLER SAYFASI (FİLMLER.HTML) TASARIMI --- */
+
+/* 1. Film Türü Filtreleme  */
+.film-filtre {
+    background-color: #2c3e50;
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* 2. Film Kataloğu (CSS Grid) */
+.film-katalogu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 0 40px 40px 40px;
+}
+
+.film-katalogu .film-karti {
+    border: 1px solid #ddd;
+    border-top: 5px solid #e74c3c;
+}
+
+.film-katalogu p {
+    margin-bottom: 8px;
+    color: #555;
+}
+
+/* 3. Yorum ve Değerlendirme Formu (Flexbox) */
+.yorum-alani {
+    background-color: #ecf0f1;
+    padding: 40px;
+    margin: 0 40px 50px 40px;
+    border-radius: 8px;
+}
+
+.yorum-alani h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 25px;
+}
+
+.yorum-formu {
+    display: flex;
+    flex-direction: column; /* Form elemanlarını alt alta dizer */
+    gap: 20px;
+    max-width: 600px; /* Formun çok fazla uzamasını engeller */
+    margin: 0 auto; /* Formu sayfanın tam ortasına hizalar */
+}
+
+.form-grup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-grup label {
+    font-weight: bold;
+    color: #34495e;
+}
+
+.form-grup input, .form-grup select, .form-grup textarea {
+    padding: 12px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.gonder-btn {
+    background-color: #2c3e50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.gonder-btn:hover {
+    background-color: #e74c3c;
+}
+
+/* --- KAMPANYALAR SAYFASI (KAMPANYALAR.HTML) TASARIMI --- */
+
+.kampanyalar-alani {
+    padding: 40px;
+}
+
+.kampanyalar-alani h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 40px;
+}
+
+.kampanya-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.kampanya-karti {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    border-top: 5px solid #f1c40f;
+}
+
+.kampanya-gorsel {
+    background-color: #ecf0f1;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    color: #7f8c8d;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.kampanya-karti h3 {
+    color: #e74c3c;
+    margin-bottom: 15px;
+}
+
+.kampanya-karti p {
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.gecerlilik {
+    display: inline-block;
+    background-color: #2c3e50;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+}
+
+/* --- SEPETİM SAYFASI (SEPETİM.HTML) TASARIMI --- */
+
+.sepet-alani {
+    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto; /* Sepeti ekranın tam ortasında tutar */
+}
+
+.sepet-alani h2 {
+    color: #2c3e50;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+/* Sepet Öğesi (Flexbox Kullanımı) */
+.sepet-ogesi {
+    display: flex;
+    justify-content: space-between; /* Detayları sola, işlemleri sağa yaslar */
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    margin-bottom: 15px;
+    border-left: 5px solid #e74c3c;
+}
+
+.bilet-detay h3 {
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.bilet-detay p {
+    color: #7f8c8d;
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+}
+
+.bilet-islem {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+}
+
+.adet-kontrol {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.adet-kontrol input {
+    width: 60px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.sil-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.sil-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Sepet Özeti */
+.sepet-ozeti {
+    margin-top: 30px;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.satin-al-btn {
+    background-color: #f1c40f;
+    color: #2c3e50;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.satin-al-btn:hover {
+    background-color: #d4ac0d;
+}

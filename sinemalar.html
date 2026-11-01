@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sinemalar</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stil.css">
 </head>
 <body>
     <header>
@@ -18,13 +18,100 @@
         </nav>
     </header>
 
-    <main>
-        <section>
-            <h2>Sinemalar Sayfası</h2>
-            <p>Burası sinemalar sayfası içeriği olacak.</p>
-        </section>
-    </main>
+<main>
+    <!-- Konum ve Film Filtreleme Alanı -->
+    <section class="konum-filtre">
+        <h2>Sana En Yakın Sinemayı ve Seansı Bul</h2>
+        <div class="filtre-kutusu">
+            <select id="il-secimi">
+                <option value="">İl Seçiniz</option>
+                <option value="ankara">Ankara</option>
+                <option value="istanbul">İstanbul</option>
+            </select>
+            <select id="ilce-secimi">
+                <option value="">İlçe Seçiniz</option>
+                <option value="cankaya">Çankaya</option>
+                <option value="yenimahalle">Yenimahalle</option>
+                <option value="kadikoy">Kadıköy</option>
+            </select>
+            <!-- YENİ EKLENEN FİLM SEÇİM ALANI -->
+            <select id="film-secimi">
+                <option value="">Film Seçiniz</option>
+                <option value="korku-kapani">Korku Kapanı</option>
+                <option value="ask-tesadufleri">Aşk Tesadüfleri Sever</option>
+                <option value="hizli-ofkeli">Hızlı ve Öfkeli</option>
+            </select>
+            <button>Seansları Listele</button>
+        </div>
+    </section>
 
+    <!-- Sinema Salonları ve Seanslar (Kart Yapısı) -->
+    <section class="sinema-listesi">
+        <div class="sinema-karti">
+            <h3>Büyülü Fener Sineması - Kızılay</h3>
+            <p><strong>Adres:</strong> Hatay Sk. No:18, Kızılay/Ankara</p>
+            
+            <div class="seans-bilgileri">
+                <h4>Korku Kapanı - Seansları</h4>
+                <div class="seans-saatleri">
+                    <span>11:00</span>
+                    <span>14:30</span>
+                    <span>18:15</span>
+                    <span>21:00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sinema-karti">
+            <h3>Armada Sinemaları - Söğütözü</h3>
+            <p><strong>Adres:</strong> Eskişehir Yolu No:6, Yenimahalle/Ankara</p>
+            
+            <div class="seans-bilgileri">
+                <h4>Aşk Tesadüfleri Sever - Seansları</h4>
+                <div class="seans-saatleri">
+                    <span>12:00</span>
+                    <span>15:45</span>
+                    <span>19:30</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fiyat Karşılaştırma Tablosu -->
+    <section class="fiyat-tablosu-alani">
+        <h2>Bilet Fiyatları Karşılaştırması</h2>
+        <table class="fiyat-tablosu">
+            <thead>
+                <tr>
+                    <th>Sinema Salonu</th>
+                    <th>Tam Bilet</th>
+                    <th>Öğrenci Bilet</th>
+                    <th>Halk Günü (Çarşamba)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Büyülü Fener (Kızılay)</td>
+                    <td>120 ₺</td>
+                    <td>90 ₺</td>
+                    <td>80 ₺</td>
+                </tr>
+                <tr>
+                    <td>Armada (Söğütözü)</td>
+                    <td>150 ₺</td>
+                    <td>110 ₺</td>
+                    <td>100 ₺</td>
+                </tr>
+                <tr>
+                    <td>Cepa (Mustafa Kemal)</td>
+                    <td>140 ₺</td>
+                    <td>100 ₺</td>
+                    <td>90 ₺</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
   
     <footer>
         <p>&copy; 2026 Ali Efe Boz - Tüm Hakları Saklıdır.</p>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filmler</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stil.css">
 </head>
 <body>
     <header>
@@ -19,12 +19,78 @@
     </header>
 
     
-    <main>
-        <section>
-            <h2>Filmler Sayfası</h2>
-            <p>Burası filmler sayfası içeriği olacak.</p>
-        </section>
-    </main>
+<main>
+    <!-- Film Türü Filtreleme Alanı -->
+    <section class="film-filtre">
+        <h2>Moduna Göre Film Seç</h2>
+        <div class="filtre-kutusu">
+            <select id="tur-secimi">
+                <option value="">Tüm Türler</option>
+                <option value="korku">Korku</option>
+                <option value="romantik">Romantik</option>
+                <option value="aksiyon">Aksiyon</option>
+            </select>
+            <button>Filtrele</button>
+        </div>
+    </section>
+
+    <!-- Film Afişleri ve Detayları (Grid Yapısı) -->
+    <section class="film-katalogu">
+        <div class="film-karti" data-tur="korku">
+            <div class="afis-yer-tutucu">Korku Kapanı Afişi</div>
+            <h3>Korku Kapanı</h3>
+            <p><strong>Tür:</strong> Korku</p>
+            <p><strong>Oyuncular:</strong> Eliza Dushku, Jeremy Sisto</p>
+        </div>
+
+        <div class="film-karti" data-tur="romantik">
+            <div class="afis-yer-tutucu">Aşk Tesadüfleri Sever Afişi</div>
+            <h3>Aşk Tesadüfleri Sever</h3>
+            <p><strong>Tür:</strong> Romantik / Dram</p>
+            <p><strong>Oyuncular:</strong> Mehmet Günsür, Belçim Bilgin</p>
+        </div>
+
+        <div class="film-karti" data-tur="aksiyon">
+            <div class="afis-yer-tutucu">Hızlı ve Öfkeli Afişi</div>
+            <h3>Hızlı ve Öfkeli</h3>
+            <p><strong>Tür:</strong> Aksiyon</p>
+            <p><strong>Oyuncular:</strong> Vin Diesel, Paul Walker</p>
+        </div>
+    </section>
+
+    <!-- Kullanıcı Yorum ve Değerlendirme Formu -->
+    <section class="yorum-alani">
+        <h2>Filmi Değerlendir</h2>
+        <form class="yorum-formu">
+            <div class="form-grup">
+                <label for="kullanici-adi">Adınız Soyadınız:</label>
+                <input type="text" id="kullanici-adi" placeholder="Örn: Ali Efe Boz">
+            </div>
+            
+            <div class="form-grup">
+                <label for="film-sec">Hangi Filmi Değerlendiriyorsunuz?</label>
+                <select id="film-sec">
+                    <option value="">Film Seçiniz...</option>
+                    <option value="korku-kapani">Korku Kapanı</option>
+                    <option value="ask-tesadufleri">Aşk Tesadüfleri Sever</option>
+                    <option value="hizli-ofkeli">Hızlı ve Öfkeli</option>
+                </select>
+            </div>
+
+            <div class="form-grup">
+                <label for="puan">Puanınız (1-5):</label>
+                <input type="number" id="puan" min="1" max="5" placeholder="5">
+            </div>
+
+            <div class="form-grup">
+                <label for="yorum">Yorumunuz:</label>
+                <textarea id="yorum" rows="4" placeholder="Film hakkındaki düşüncelerinizi yazın..."></textarea>
+            </div>
+
+            <button type="submit" class="gonder-btn">Yorumu Gönder</button>
+        </form>
+    </section>
+</main>
 
    
     <footer>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ana Sayfa</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stil.css">
 </head>
 <body>
     <header>
@@ -20,11 +20,45 @@
 
   
     <main>
-        <section>
-            <h2>Ana Sayfa</h2>
-            <p>Burası ana sayfa içeriği olacak.</p>
-        </section>
-    </main>
+    <!-- Arama ve Şehir Seçimi Alanı -->
+    <section class="arama-alani">
+        <h2>Sana En Yakın Sinemayı ve Filmi Bul</h2>
+        <div class="arama-kutusu">
+            <select id="sehir-secimi">
+                <option value="">Şehir Seçin...</option>
+                <option value="ankara">Ankara</option>
+                <option value="istanbul">İstanbul</option>
+                <option value="izmir">İzmir</option>
+            </select>
+            <button>Film Bul</button>
+        </div>
+    </section>
+
+    <!-- Öne Çıkan Filmler Alanı -->
+    <section class="one-cikanlar">
+        <h2>Vizyondaki Öne Çıkan Filmler</h2>
+        <div class="film-grid">
+            <!-- Film Kartı 1 -->
+            <div class="film-karti">
+                <div class="afis-yer-tutucu">Afiş 1</div>
+                <h3>Korku Kapanı</h3>
+                <p>Tür: Korku</p>
+            </div>
+            <!-- Film Kartı 2 -->
+            <div class="film-karti">
+                <div class="afis-yer-tutucu">Afiş 2</div>
+                <h3>Aşk Tesadüfleri Sever</h3>
+                <p>Tür: Romantik</p>
+            </div>
+            <!-- Film Kartı 3 -->
+            <div class="film-karti">
+                <div class="afis-yer-tutucu">Afiş 3</div>
+                <h3>Hızlı ve Öfkeli</h3>
+                <p>Tür: Aksiyon</p>
+            </div>
+        </div>
+    </section>
+</main>
 
   
     <footer>
