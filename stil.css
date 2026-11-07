@@ -510,3 +510,60 @@ nav a:hover {
 .satin-al-btn:hover {
     background-color: #d4ac0d;
 }
+
+/* --- MOBİL UYUMLULUK (RESPONSIVE TASARIM) --- */
+@media (max-width: 768px) {
+    /* 1. Üst Kısım ve Menü Düzenlemesi */
+    header {
+        padding: 15px; /* Mobilde boşlukları biraz azaltıyoruz */
+    }
+
+    nav {
+        flex-direction: column; /* Linkleri yan yana (row) değil, alt alta diziyoruz */
+        gap: 10px; /* Butonlar arasındaki boşluğu küçültüyoruz */
+    }
+
+    nav a {
+        display: block; /* Tıklama alanını tüm satıra yayar */
+        text-align: center;
+    }
+
+    /* --- 2. Sayfa Kenar Boşluklarını Daraltma --- */
+    .arama-alani, .one-cikanlar, .sinema-listesi, .fiyat-tablosu-alani, .film-katalogu, .yorum-alani, .kampanyalar-alani, .sepet-alani {
+        padding: 20px 15px; /* Mobilde gereksiz beyaz boşlukları kısıp içeriğe yer açıyoruz */
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    /* --- 3. Filtre Kutularını Alt Alta Alma --- */
+    .arama-kutusu, .filtre-kutusu {
+        flex-direction: column; /* İl, ilçe, film seçme kutularını ve butonları yan yana değil, alt alta diziyoruz */
+        gap: 15px;
+    }
+
+    /* --- 4. Sepetim Sayfası Mobil Düzeni --- */
+    .sepet-ogesi {
+        flex-direction: column; /* Bilet bilgileri solda, sil butonu sağda kalmasın diye hepsini alt alta alıyoruz */
+        text-align: center;
+        gap: 20px;
+    }
+
+    .bilet-islem {
+        align-items: center; /* Adet seçiciyi ve Sil butonunu tam ortaya hizalıyoruz */
+        width: 100%;
+    }
+
+    .sepet-ozeti {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* --- 5. Fiyat Tablosunun Ekrana Sığdırılması --- */
+    .fiyat-tablosu {
+        font-size: 0.85rem; /* Tablonun dışarı taşmaması için yazıları biraz küçültüyoruz */
+    }
+    
+    .fiyat-tablosu th, .fiyat-tablosu td {
+        padding: 10px 5px; /* Hücre içindeki boşlukları daraltarak tablonun ekrana tam oturmasını sağlıyoruz */
+    }
+}
