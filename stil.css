@@ -263,6 +263,35 @@ nav a:hover {
     background-color: #f9f9f9; /* Satırın üzerine gelince hafifçe rengi değişir */
 }
 
+/* --- 4. HAFTA: GELİŞMİŞ FİYAT TABLOSU ROZETLERİ --- */
+.tablo-aciklama {
+    text-align: center;
+    color: #555;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.rozet {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: white;
+    display: inline-block;
+}
+
+.rozet.standart {
+    background-color: #7f8c8d;
+}
+
+.rozet.vip {
+    background-color: #f39c12;
+}
+
+.rozet.imax {
+    background-color: #2980b9;
+}
+
 /* --- FİLMLER SAYFASI (FİLMLER.HTML) TASARIMI --- */
 
 /* 1. Film Türü Filtreleme  */
@@ -347,6 +376,44 @@ nav a:hover {
 
 .gonder-btn:hover {
     background-color: #e74c3c;
+}
+
+/* --- 4. HAFTA: GELİŞMİŞ YORUM FORMU STİLLERİ --- */
+.form-aciklama {
+    text-align: center;
+    color: #555;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}
+
+.form-grup-onay {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #bdc3c7;
+}
+
+.form-grup-onay input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.form-grup-onay label {
+    font-size: 0.9rem;
+    color: #34495e;
+    cursor: pointer;
+}
+
+.form-mesaj {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    display: none; /* JS ile mesaj gösterileceği zaman aktif olacak */
 }
 
 /* --- KAMPANYALAR SAYFASI (KAMPANYALAR.HTML) TASARIMI --- */

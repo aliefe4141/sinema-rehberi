@@ -58,18 +58,25 @@
         </div>
     </section>
 
-    <!-- Kullanıcı Yorum ve Değerlendirme Formu -->
+ <!-- Kullanıcı Yorum ve Değerlendirme Formu -->
     <section class="yorum-alani">
-        <h2>Filmi Değerlendir</h2>
-        <form class="yorum-formu">
+        <h2>Filmi Değerlendir ve Yorum Yap</h2>
+        <p class="form-aciklama">İzlediğiniz filmler hakkındaki görüşlerinizi diğer sinemaseverlerle paylaşın.</p>
+        
+        <form class="yorum-formu" id="degerlendirme-formu" novalidate>
             <div class="form-grup">
-                <label for="kullanici-adi">Adınız Soyadınız:</label>
-                <input type="text" id="kullanici-adi" placeholder="Örn: Ali Efe Boz">
+                <label for="kullanici-adi">Adınız Soyadınız: *</label>
+                <input type="text" id="kullanici-adi" placeholder="Örn: Ali Efe Boz" required>
+            </div>
+
+            <div class="form-grup">
+                <label for="kullanici-eposta">E-posta Adresiniz: *</label>
+                <input type="email" id="kullanici-eposta" placeholder="Örn: aliefe@ornek.com" required>
             </div>
             
             <div class="form-grup">
-                <label for="film-sec">Hangi Filmi Değerlendiriyorsunuz?</label>
-                <select id="film-sec">
+                <label for="film-sec">Hangi Filmi Değerlendiriyorsunuz? *</label>
+                <select id="film-sec" required>
                     <option value="">Film Seçiniz...</option>
                     <option value="korku-kapani">Korku Kapanı</option>
                     <option value="ask-tesadufleri">Aşk Tesadüfleri Sever</option>
@@ -78,16 +85,31 @@
             </div>
 
             <div class="form-grup">
-                <label for="puan">Puanınız (1-5):</label>
-                <input type="number" id="puan" min="1" max="5" placeholder="5">
+                <label for="puan">Puanınız: *</label>
+                <select id="puan" required>
+                    <option value="">Puan Seçiniz...</option>
+                    <option value="5">⭐⭐⭐⭐⭐ (5 - Muhteşem)</option>
+                    <option value="4">⭐⭐⭐⭐ (4 - Çok İyi)</option>
+                    <option value="3">⭐⭐⭐ (3 - İdare Eder)</option>
+                    <option value="2">⭐⭐ (2 - Zayıf)</option>
+                    <option value="1">⭐ (1 - Kötü)</option>
+                </select>
             </div>
 
             <div class="form-grup">
-                <label for="yorum">Yorumunuz:</label>
-                <textarea id="yorum" rows="4" placeholder="Film hakkındaki düşüncelerinizi yazın..."></textarea>
+                <label for="yorum">Yorumunuz: *</label>
+                <textarea id="yorum" rows="4" placeholder="Film hakkındaki düşüncelerinizi en az 10 karakter olacak şekilde yazın..." required></textarea>
             </div>
 
-            <button type="submit" class="gonder-btn">Yorumu Gönder</button>
+            <div class="form-grup-onay">
+                <input type="checkbox" id="spoiler-onay">
+                <label for="spoiler-onay">Bu yorum filmin sonu veya önemli sahneleri hakkında sürprizbozan (spoiler) içeriyor.</label>
+            </div>
+
+            <!-- 6. Haftada JS ile hata/başarı mesajlarını göstereceğimiz alan -->
+            <div id="form-mesaj" class="form-mesaj"></div>
+
+            <button type="submit" class="gonder-btn">Değerlendirmeyi Gönder</button>
         </form>
     </section>
 </main>
